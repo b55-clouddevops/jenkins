@@ -17,6 +17,10 @@ pipeline {
         password(name: 'PASSWORD', defaultValue: 'SECRET', description: 'Enter a password')
     }
 
+    tools {
+        maven 'maven-3.8.5' 
+    }
+
     stages {        
         stage('Stage One') {
             environment {                          // Stage level variable 
