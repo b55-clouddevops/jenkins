@@ -31,7 +31,8 @@ pipeline {
                     echo Hello World
                     echo Welcome To Jenkins
                     echo Environment URL is ${ENV_URL}
-                    mvn -v               
+                    mvn -v     
+                    sleep 10           
                   '''
             }
         }
@@ -42,11 +43,13 @@ pipeline {
             steps {
                 sh "echo Stage Two Demo"
                 sh "echo Trainig  Batch is ${BATCH}"
+                sh "sleep 30"
             }
         }
         stage('Stage Three') {
             steps {
                 sh "echo Stage Three Demo"
+                sh "sleep 50"
             }
         }
     }
