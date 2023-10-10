@@ -46,8 +46,8 @@ pipeline {
                                     cd mutable-infra
                                     terrafile -f env-${ENV}/Terrafile
                                     terraform init --backend-config=env-${ENV}/${ENV}-backend.tfvars -reconfigure
-                                    terraform plan -var-file=env-${ENV}/${ENV}.tfvars -var APP_VERSION=001
-                                    terraform apply -var-file=env-${ENV}/${ENV}.tfvars -var APP_VERSION=001 -auto-approve
+                                    terraform plan -var-file=env-${ENV}/${ENV}.tfvars -var APP_VERSION=100
+                                    terraform apply -var-file=env-${ENV}/${ENV}.tfvars -var APP_VERSION=100 -auto-approve
                                 ''' 
                             }
                         }
@@ -59,8 +59,8 @@ pipeline {
                                     cd mutable-infra
                                     terrafile -f env-${ENV}/Terrafile
                                     terraform init --backend-config=env-${ENV}/${ENV}-backend.tfvars -reconfigure
-                                    terraform plan -var-file=env-${ENV}/${ENV}.tfvars -var APP_VERSION=001
-                                    terraform apply -var-file=env-${ENV}/${ENV}.tfvars -var APP_VERSION=001 -auto-approve
+                                    terraform plan -var-file=env-${ENV}/${ENV}.tfvars -var APP_VERSION=100
+                                    terraform apply -var-file=env-${ENV}/${ENV}.tfvars -var APP_VERSION=100 -auto-approve
                                 ''' 
                             }
                         }
@@ -72,8 +72,8 @@ pipeline {
                                     cd mutable-infra
                                     terrafile -f env-${ENV}/Terrafile
                                     terraform init --backend-config=env-${ENV}/${ENV}-backend.tfvars -reconfigure
-                                    terraform plan -var-file=env-${ENV}/${ENV}.tfvars -var APP_VERSION=001
-                                    terraform apply -var-file=env-${ENV}/${ENV}.tfvars -var APP_VERSION=001 -auto-approve
+                                    terraform plan -var-file=env-${ENV}/${ENV}.tfvars -var APP_VERSION=100
+                                    terraform apply -var-file=env-${ENV}/${ENV}.tfvars -var APP_VERSION=100 -auto-approve
                                 ''' 
                             }
                         }
@@ -85,8 +85,8 @@ pipeline {
                                     cd mutable-infra
                                     terrafile -f env-${ENV}/Terrafile
                                     terraform init --backend-config=env-${ENV}/${ENV}-backend.tfvars -reconfigure
-                                    terraform plan -var-file=env-${ENV}/${ENV}.tfvars -var APP_VERSION=001
-                                    terraform apply -var-file=env-${ENV}/${ENV}.tfvars -var APP_VERSION=001 -auto-approve
+                                    terraform plan -var-file=env-${ENV}/${ENV}.tfvars -var APP_VERSION=100
+                                    terraform apply -var-file=env-${ENV}/${ENV}.tfvars -var APP_VERSION=100 -auto-approve
                                 ''' 
                             }
                         }
@@ -98,8 +98,8 @@ pipeline {
                                     cd mutable-infra
                                     terrafile -f env-${ENV}/Terrafile
                                     terraform init --backend-config=env-${ENV}/${ENV}-backend.tfvars -reconfigure
-                                    terraform plan -var-file=env-${ENV}/${ENV}.tfvars -var APP_VERSION=001
-                                    terraform apply -var-file=env-${ENV}/${ENV}.tfvars -var APP_VERSION=001 -auto-approve
+                                    terraform plan -var-file=env-${ENV}/${ENV}.tfvars -var APP_VERSION=100
+                                    terraform apply -var-file=env-${ENV}/${ENV}.tfvars -var APP_VERSION=100 -auto-approve
                                 ''' 
                                 }
                             }
@@ -113,8 +113,8 @@ pipeline {
                                 cd mutable-infra
                                 terrafile -f env-${ENV}/Terrafile
                                 terraform init --backend-config=env-${ENV}/${ENV}-backend.tfvars -reconfigure
-                                terraform plan -var-file=env-${ENV}/${ENV}.tfvars -var APP_VERSION=001
-                                terraform apply -var-file=env-${ENV}/${ENV}.tfvars -var APP_VERSION=001 -auto-approve
+                                terraform plan -var-file=env-${ENV}/${ENV}.tfvars -var APP_VERSION=100
+                                terraform apply -var-file=env-${ENV}/${ENV}.tfvars -var APP_VERSION=100 -auto-approve
                             ''' 
                         }
                     }
