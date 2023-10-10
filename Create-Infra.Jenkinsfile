@@ -42,51 +42,61 @@ pipeline {
                 stage('Terraform Create Catalogue') {
                     steps {
                                 git branch: 'main', url: 'https://github.com/b55-clouddevops/catalogue.git'
-                                sh "cd mutable-infra"
-                                sh "terrafile -f env-${ENV}/Terrafile"
-                                sh "terraform init --backend-config=env-${ENV}/${ENV}-backend.tfvars -reconfigure"
-                                sh "terraform plan -var-file=env-${ENV}/${ENV}.tfvars -var APP_VERSION=001"
-                                sh "terraform apply -var-file=env-${ENV}/${ENV}.tfvars -var APP_VERSION=001 -auto-approve"
+                                sh ''' 
+                                    cd mutable-infra
+                                    terrafile -f env-${ENV}/Terrafile
+                                    terraform init --backend-config=env-${ENV}/${ENV}-backend.tfvars -reconfigure
+                                    terraform plan -var-file=env-${ENV}/${ENV}.tfvars -var APP_VERSION=001
+                                    terraform apply -var-file=env-${ENV}/${ENV}.tfvars -var APP_VERSION=001 -auto-approve
+                                ''' 
                             }
                         } 
                 stage('Terraform Create User') {
                     steps {
                                 git branch: 'main', url: 'https://github.com/b55-clouddevops/user.git'
-                                sh "cd mutable-infra"
-                                sh "terrafile -f env-${ENV}/Terrafile"
-                                sh "terraform init --backend-config=env-${ENV}/${ENV}-backend.tfvars  -reconfigure"
-                                sh "terraform plan -var-file=env-${ENV}/${ENV}.tfvars -var APP_VERSION=001"
-                                sh "terraform apply -var-file=env-${ENV}/${ENV}.tfvars -var APP_VERSION=001 -auto-approve"
+                                sh ''' 
+                                    cd mutable-infra
+                                    terrafile -f env-${ENV}/Terrafile
+                                    terraform init --backend-config=env-${ENV}/${ENV}-backend.tfvars -reconfigure
+                                    terraform plan -var-file=env-${ENV}/${ENV}.tfvars -var APP_VERSION=001
+                                    terraform apply -var-file=env-${ENV}/${ENV}.tfvars -var APP_VERSION=001 -auto-approve
+                                ''' 
                             }
                         }
                 stage('Terraform Create Cart') {
                     steps {
                                 git branch: 'main', url: 'https://github.com/b55-clouddevops/cart.git'
-                                sh "cd mutable-infra"
-                                sh "terrafile -f env-${ENV}/Terrafile"
-                                sh "terraform init --backend-config=env-${ENV}/${ENV}-backend.tfvars -reconfigure"
-                                sh "terraform plan -var-file=env-${ENV}/${ENV}.tfvars -var APP_VERSION=001"
-                                sh "terraform apply -var-file=env-${ENV}/${ENV}.tfvars -var APP_VERSION=001 -auto-approve"
+                                sh ''' 
+                                    cd mutable-infra
+                                    terrafile -f env-${ENV}/Terrafile
+                                    terraform init --backend-config=env-${ENV}/${ENV}-backend.tfvars -reconfigure
+                                    terraform plan -var-file=env-${ENV}/${ENV}.tfvars -var APP_VERSION=001
+                                    terraform apply -var-file=env-${ENV}/${ENV}.tfvars -var APP_VERSION=001 -auto-approve
+                                ''' 
                             }
                         }
                 stage('Terraform Create Shipping') {
                     steps {
                                 git branch: 'main', url: 'https://github.com/b55-clouddevops/shipping.git'
-                                sh "cd mutable-infra"
-                                sh "terrafile -f env-${ENV}/Terrafile"
-                                sh "terraform init --backend-config=env-${ENV}/${ENV}-backend.tfvars -reconfigure"
-                                sh "terraform plan -var-file=env-${ENV}/${ENV}.tfvars -var APP_VERSION=001"
-                                sh "terraform apply -var-file=env-${ENV}/${ENV}.tfvars -var APP_VERSION=001 -auto-approve"
+                                sh ''' 
+                                    cd mutable-infra
+                                    terrafile -f env-${ENV}/Terrafile
+                                    terraform init --backend-config=env-${ENV}/${ENV}-backend.tfvars -reconfigure
+                                    terraform plan -var-file=env-${ENV}/${ENV}.tfvars -var APP_VERSION=001
+                                    terraform apply -var-file=env-${ENV}/${ENV}.tfvars -var APP_VERSION=001 -auto-approve
+                                ''' 
                             }
                         }
                 stage('Terraform Create Payment') {
                     steps {
                                 git branch: 'main', url: 'https://github.com/b55-clouddevops/payment.git'
-                                sh "cd mutable-infra"
-                                sh "terrafile -f env-${ENV}/Terrafile"
-                                sh "terraform init --backend-config=env-${ENV}/${ENV}-backend.tfvars -reconfigure"
-                                sh "terraform plan -var-file=env-${ENV}/${ENV}.tfvars -var APP_VERSION=001"
-                                sh "terraform apply -var-file=env-${ENV}/${ENV}.tfvars -var APP_VERSION=001 -auto-approve"
+                                sh ''' 
+                                    cd mutable-infra
+                                    terrafile -f env-${ENV}/Terrafile
+                                    terraform init --backend-config=env-${ENV}/${ENV}-backend.tfvars -reconfigure
+                                    terraform plan -var-file=env-${ENV}/${ENV}.tfvars -var APP_VERSION=001
+                                    terraform apply -var-file=env-${ENV}/${ENV}.tfvars -var APP_VERSION=001 -auto-approve
+                                ''' 
                             }
                         }
                     }
