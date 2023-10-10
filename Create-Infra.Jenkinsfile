@@ -100,6 +100,18 @@ pipeline {
                             }
                         }
                     }
+                }
+        stage('Terraform Create Payment') {
+                steps {
+                            git branch: 'main', url: 'https://github.com/b55-clouddevops/frontend.git'
+                            sh ''' 
+                                cd mutable-infra
+                                terrafile -f env-${ENV}/Terrafile
+                                terraform init --backend-config=env-${ENV}/${ENV}-backend.tfvars -reconfigure
+                                terraform plan -var-file=env-${ENV}/${ENV}.tfvars -var APP_VERSION=001
+                                terraform apply -var-file=env-${ENV}/${ENV}.tfvars -var APP_VERSION=001 -auto-approve
+                            ''' 
+                    }
                 }  
             }    
         }                        
