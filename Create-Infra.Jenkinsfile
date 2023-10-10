@@ -41,7 +41,7 @@ pipeline {
             parallel {
                 stage('Terraform Create Catalogue') {
                     steps {
-                                git branch: 'main', url: 'https://github.com/b55-clouddevops/catalogue.git'
+                        dir('catalogue') {   git branch: 'main', url: 'https://github.com/b55-clouddevops/catalogue.git'
                                 sh ''' 
                                     cd mutable-infra
                                     terrafile -f env-${ENV}/Terrafile
@@ -50,46 +50,11 @@ pipeline {
                                     terraform apply -var-file=env-${ENV}/${ENV}.tfvars -var APP_VERSION=001 -auto-approve
                                 ''' 
                             }
-                        } 
+                        }
+                    } 
                 stage('Terraform Create User') {
                     steps {
-                                git branch: 'main', url: 'https://github.com/b55-clouddevops/user.git'
-                                sh ''' 
-                                    cd mutable-infra
-                                    terrafile -f env-${ENV}/Terrafile
-                                    terraform init --backend-config=env-${ENV}/${ENV}-backend.tfvars -reconfigure
-                                    terraform plan -var-file=env-${ENV}/${ENV}.tfvars -var APP_VERSION=001
-                                    terraform apply -var-file=env-${ENV}/${ENV}.tfvars -var APP_VERSION=001 -auto-approve
-                                ''' 
-                            }
-                        }
-                stage('Terraform Create Cart') {
-                    steps {
-                                git branch: 'main', url: 'https://github.com/b55-clouddevops/cart.git'
-                                sh ''' 
-                                    cd mutable-infra
-                                    terrafile -f env-${ENV}/Terrafile
-                                    terraform init --backend-config=env-${ENV}/${ENV}-backend.tfvars -reconfigure
-                                    terraform plan -var-file=env-${ENV}/${ENV}.tfvars -var APP_VERSION=001
-                                    terraform apply -var-file=env-${ENV}/${ENV}.tfvars -var APP_VERSION=001 -auto-approve
-                                ''' 
-                            }
-                        }
-                stage('Terraform Create Shipping') {
-                    steps {
-                                git branch: 'main', url: 'https://github.com/b55-clouddevops/shipping.git'
-                                sh ''' 
-                                    cd mutable-infra
-                                    terrafile -f env-${ENV}/Terrafile
-                                    terraform init --backend-config=env-${ENV}/${ENV}-backend.tfvars -reconfigure
-                                    terraform plan -var-file=env-${ENV}/${ENV}.tfvars -var APP_VERSION=001
-                                    terraform apply -var-file=env-${ENV}/${ENV}.tfvars -var APP_VERSION=001 -auto-approve
-                                ''' 
-                            }
-                        }
-                stage('Terraform Create Payment') {
-                    steps {
-                                git branch: 'main', url: 'https://github.com/b55-clouddevops/payment.git'
+                        dir('user') {  git branch: 'main', url: 'https://github.com/b55-clouddevops/user.git'
                                 sh ''' 
                                     cd mutable-infra
                                     terrafile -f env-${ENV}/Terrafile
@@ -100,10 +65,50 @@ pipeline {
                             }
                         }
                     }
+                stage('Terraform Create Cart') {
+                    steps {
+                        dir('cart') { git branch: 'main', url: 'https://github.com/b55-clouddevops/cart.git'
+                                sh ''' 
+                                    cd mutable-infra
+                                    terrafile -f env-${ENV}/Terrafile
+                                    terraform init --backend-config=env-${ENV}/${ENV}-backend.tfvars -reconfigure
+                                    terraform plan -var-file=env-${ENV}/${ENV}.tfvars -var APP_VERSION=001
+                                    terraform apply -var-file=env-${ENV}/${ENV}.tfvars -var APP_VERSION=001 -auto-approve
+                                ''' 
+                            }
+                        }
+                    }
+                stage('Terraform Create Shipping') {
+                    steps {
+                        dir('shipping') { git branch: 'main', url: 'https://github.com/b55-clouddevops/shipping.git'
+                                sh ''' 
+                                    cd mutable-infra
+                                    terrafile -f env-${ENV}/Terrafile
+                                    terraform init --backend-config=env-${ENV}/${ENV}-backend.tfvars -reconfigure
+                                    terraform plan -var-file=env-${ENV}/${ENV}.tfvars -var APP_VERSION=001
+                                    terraform apply -var-file=env-${ENV}/${ENV}.tfvars -var APP_VERSION=001 -auto-approve
+                                ''' 
+                            }
+                        }
+                    }
+                stage('Terraform Create Payment') {
+                    steps {
+                        dir('payment') { git branch: 'main', url: 'https://github.com/b55-clouddevops/payment.git'
+                                sh ''' 
+                                    cd mutable-infra
+                                    terrafile -f env-${ENV}/Terrafile
+                                    terraform init --backend-config=env-${ENV}/${ENV}-backend.tfvars -reconfigure
+                                    terraform plan -var-file=env-${ENV}/${ENV}.tfvars -var APP_VERSION=001
+                                    terraform apply -var-file=env-${ENV}/${ENV}.tfvars -var APP_VERSION=001 -auto-approve
+                                ''' 
+                                }
+                            }
+                        }
+                    }
                 }
         stage('Terraform Create Payment') {
                 steps {
-                            git branch: 'main', url: 'https://github.com/b55-clouddevops/frontend.git'
+                        dir('frontend') {  git branch: 'main', url: 'https://github.com/b55-clouddevops/frontend.git'
                             sh ''' 
                                 cd mutable-infra
                                 terrafile -f env-${ENV}/Terrafile
@@ -111,6 +116,7 @@ pipeline {
                                 terraform plan -var-file=env-${ENV}/${ENV}.tfvars -var APP_VERSION=001
                                 terraform apply -var-file=env-${ENV}/${ENV}.tfvars -var APP_VERSION=001 -auto-approve
                             ''' 
+                        }
                     }
                 }  
             }    
