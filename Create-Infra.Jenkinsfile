@@ -106,7 +106,7 @@ pipeline {
                         }
                     }
                 }
-        stage('Terraform Create Payment') {
+        stage('Terraform Create Frontend') {
                 steps {
                         dir('frontend') {  git branch: 'main', url: 'https://github.com/b55-clouddevops/frontend.git'
                             sh ''' 
