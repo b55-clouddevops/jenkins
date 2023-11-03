@@ -9,7 +9,7 @@ pipeline {
     stages {
 
 
-        stage('Destroy-EKS') {
+        stage('Destroying EKS') {
             steps {
                 dir('EKS') {  git branch: 'main', url: 'https://github.com/b55-clouddevops/kubernetes.git'
 
@@ -21,7 +21,7 @@ pipeline {
                  }
             }
 
-        stage('Terraform Destroy Databases') {
+        stage('Destroying Databases') {
             steps {
                         git branch: 'main', url: 'https://github.com/b55-clouddevops/terraform-databases.git'
                         sh "terrafile -f env-${ENV}/Terrafile"
@@ -30,7 +30,7 @@ pipeline {
                     }
                 }
 
-        stage('Terraform Create Network') {
+        stage('Destroying Network') {
             steps {
                 dir('VPC') { git branch: 'main', url: 'https://github.com/b55-clouddevops/terraform-vpc.git'
                         sh "terrafile -f env-${ENV}/Terrafile"
