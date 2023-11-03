@@ -18,6 +18,16 @@ pipeline {
                 }
             }
 
+        stage('Terraform Create Databases') {
+            steps {
+                        git branch: 'main', url: 'https://github.com/b55-clouddevops/terraform-databases.git'
+                        sh "terrafile -f env-${ENV}/Terrafile"
+                        sh "terraform init --backend-config=env-${ENV}/${ENV}-backend.tfvars -reconfigure"
+                        sh "terraform plan -var-file=env-${ENV}/${ENV}.tfvars"
+                        sh "terraform apply -var-file=env-${ENV}/${ENV}.tfvars -auto-approve"
+                    }
+                }
+
         stage('Creating-EKS') {
             steps {
                 dir('EKS') {  git branch: 'main', url: 'https://github.com/b55-clouddevops/kubernetes.git'
